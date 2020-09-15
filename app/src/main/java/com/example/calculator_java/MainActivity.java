@@ -162,6 +162,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 number = resultText.getText().toString();
             }
             if(Double.parseDouble(number) < 0) neg = true;
+
+            if(number.contains(".")) decimal = true;
+
             newOperation = true;
         }catch (Exception e){
             resultText.setText(error);
@@ -175,8 +178,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             number = "";
         }
         else{
-            int len = number.length();
-            if(number.charAt(len -1) == '.'){
+            if(number.charAt(number.length() -1) == '.'){
                 decimal = false;
             }
             number = (String) number.subSequence(0,number.length()-1);
