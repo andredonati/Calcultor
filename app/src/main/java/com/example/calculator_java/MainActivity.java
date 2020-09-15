@@ -21,17 +21,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean newOperation = true;
     boolean decimal = false;
     boolean neg = false;
-    String number = "";
+    String number = "0";
     int zeroCount = 0;
     Double val;
     double result;
+    String error = "Error";
     @Override
     @RequiresApi(28)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         resultText = findViewById(R.id.resultVal);
-        inputText = findViewById(R.id.inputVal);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+
+        number = savedInstanceState.getString("number");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+
+        outState.putString("number", number);
     }
 
     //onClick function
@@ -56,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             switch(view.getId()){
                 case R.id.btn0:
+                    clearZero(view);
                     number += "0";
                     break;
                 case R.id.btn1:
@@ -95,9 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     number += "9";
                     break;
                 case R.id.btnNegative:
-                    if(number != ""){
-                        negate(view);
-                    }
+                    negate(view);
                     break;
                 case R.id.btnDecimal:
                     setDecimal(view);
@@ -130,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             resultText.setText(number);
         }catch (Exception e){
-            resultText.setText("Error");
+            resultText.setText(error);
             e.printStackTrace();
         }
 
@@ -148,11 +161,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(neg = false){
                 number = resultText.getText().toString();
             }
-            if(Double.valueOf(number) < 0) neg = true;
+            if(Double.parseDouble(number) < 0) neg = true;
             newOperation = true;
-
         }catch (Exception e){
-            resultText.setText("Error");
+            resultText.setText(error);
             e.printStackTrace();
         }
 
@@ -172,16 +184,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     public void setDecimal(View view){
         if(!decimal){
-            if(number.equals("")){
+            if(number.equals("") || number.contains("00")){
                 number = "0.";
-            }else{
+            } else {
                 number += ".";
             }
             decimal = true;
         }
     }
     public void negate(View view){
-        if(neg == false){
+        if(!neg){
             number = "-"+number;
             val = Double.valueOf(number);
             neg = true;
@@ -213,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     public void clearZero(View view){
-        if(number == "0"){
+        if(number.equals("0") || number.equals("-0")){
             number = "";
         }
     }
