@@ -17,7 +17,7 @@
             android:layout_column="0"
             android:layout_columnWeight="1"
             android:background="@color/black"
-            android:text="C"
+            android:text="@string/C"
             android:textColor="@color/true_black"
             android:textSize="25sp"
             android:onClick="onClick"/>
@@ -30,7 +30,7 @@
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:background="@color/black"
-            android:text="+/-"
+            android:text="@string/Minus"
             android:textColor="@color/true_black"
             android:textSize="25sp"
             android:onClick="onClick"/>
@@ -44,7 +44,7 @@
             android:layout_column="3"
             android:layout_columnWeight="1"
             android:background="@color/black"
-            android:text="⌫"
+            android:text="@string/Back"
             android:textColor="@color/true_black"
             android:textSize="25sp"
             android:onClick="onClick"/>
@@ -57,7 +57,7 @@
             android:layout_column="4"
             android:layout_columnWeight="1"
             android:background="@color/orange"
-            android:text="÷"
+            android:text="@string/Divide"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:onClick="onClick"/>
@@ -83,7 +83,7 @@
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:background="@color/black"
-            android:text="8"
+            android:text="@string/button8"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:onClick="onClick"
@@ -111,7 +111,7 @@
             android:layout_columnWeight="1"
             android:layout_column="4"
             android:background="@color/orange"
-            android:text="×"
+            android:text="@string/Multi"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:onClick="onClick"/>
@@ -165,7 +165,7 @@
             android:layout_columnWeight="1"
             android:layout_column="4"
             android:background="@color/orange"
-            android:text="-"
+            android:text="@string/Minus"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:onClick="onClick"/>
@@ -219,7 +219,7 @@
             android:layout_columnWeight="1"
             android:layout_column="4"
             android:background="@color/orange"
-            android:text="+"
+            android:text="@string/Plus"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:onClick="onClick"/>
@@ -246,7 +246,7 @@
             android:layout_column="3"
             android:layout_columnWeight="1"
             android:background="@color/black"
-            android:text="."
+            android:text="@string/Decimal"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:onClick="onClick"/>
@@ -259,7 +259,7 @@
             android:layout_columnWeight="1"
             android:layout_column="4"
             android:background="@color/orange"
-            android:text="="
+            android:text="@string/Equals"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:onClick="equalsClick"/>

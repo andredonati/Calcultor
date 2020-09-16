@@ -10,4 +10,14 @@
     <string name="button7">7</string>
     <string name="button8">8</string>
     <string name="button9">9</string>
+    <string name = "C">C</string>
+    <string name="Back">⌫</string>
+    <string name="Divide">÷</string>
+    <string name="Multi">×</string>
+    <string name="Minus">-</string>
+    <string name="Plus">+</string>
+    <string name="Decimal">.</string>
+    <string name="Equals">=</string>
+    <string name="PlusMinus">+/-</string>
+
 </resources>

@@ -4,7 +4,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,7 +16,6 @@ import javax.script.ScriptEngine;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView resultText;
-    TextView inputText;
     boolean newOperation = true;
     boolean decimal = false;
     boolean neg = false;
@@ -70,50 +68,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             switch(view.getId()){
                 case R.id.btn0:
-                    clearZero(view);
+                    clearZero();
                     number += "0";
                     break;
                 case R.id.btn1:
-                    clearZero(view);
+                    clearZero();
                     number += "1";
                     break;
                 case R.id.btn2:
-                    clearZero(view);
+                    clearZero();
                     number += "2";
                     break;
                 case R.id.btn3:
-                    clearZero(view);
+                    clearZero();
                     number += "3";
                     break;
                 case R.id.btn4:
-                    clearZero(view);
+                    clearZero();
                     number += "4";
                     break;
                 case R.id.btn5:
-                    clearZero(view);
+                    clearZero();
                     number += "5";
                     break;
                 case R.id.btn6:
-                    clearZero(view);
+                    clearZero();
                     number += "6";
                     break;
                 case R.id.btn7:
-                    clearZero(view);
+                    clearZero();
                     number += "7";
                     break;
                 case R.id.btn8:
-                    clearZero(view);
+                    clearZero();
                     number += "8";
                     break;
                 case R.id.btn9:
-                    clearZero(view);
+                    clearZero();
                     number += "9";
                     break;
                 case R.id.btnNegative:
-                    negate(view);
+                    negate();
                     break;
                 case R.id.btnDecimal:
-                    setDecimal(view);
+                    setDecimal();
                     break;
                 case R.id.btnClear:
                     number = "0";
@@ -138,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     decimal = false;
                     break;
                 case R.id.btnBack:
-                    backSpace(view);
+                    backSpace();
                     break;
             }
             resultText.setText(number);
@@ -173,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
     //backspace method
-    public void backSpace(View view){
+    public void backSpace(){
         if(number.equals("")){
             number = "";
         }
@@ -184,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             number = (String) number.subSequence(0,number.length()-1);
         }
     }
-    public void setDecimal(View view){
+    public void setDecimal(){
         if(!decimal){
             if(number.equals("") || number.contains("00")){
                 number = "0.";
@@ -194,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             decimal = true;
         }
     }
-    public void negate(View view){
+    public void negate(){
         if(!neg){
             number = "-"+number;
             val = Double.valueOf(number);
@@ -222,11 +220,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return String.valueOf(finalInt);
         }
         else {
-            resultText.setText(f.toString());
+            resultText.setText(String.valueOf(f));
             return f.toString();
         }
     }
-    public void clearZero(View view){
+    public void clearZero(){
         if(number.equals("0") || number.equals("-0")){
             number = "";
         }
