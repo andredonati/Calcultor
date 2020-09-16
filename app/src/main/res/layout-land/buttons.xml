@@ -12,7 +12,7 @@
         <Button
             android:id="@+id/btnClear"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="0"
             android:layout_column="0"
             android:layout_columnWeight="1"
@@ -25,12 +25,12 @@
         <Button
             android:id= "@+id/btnNegative"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="0"
             android:layout_column="1"
             android:layout_columnWeight="1"
             android:background="@color/black"
-            android:text="@string/PlusMinus"
+            android:text="@string/Minus"
             android:textColor="@color/true_black"
             android:textSize="25sp"
             android:onClick="onClick"/>
@@ -39,7 +39,7 @@
         <Button
             android:id= "@+id/btnBack"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="0"
             android:layout_column="3"
             android:layout_columnWeight="1"
@@ -52,7 +52,7 @@
         <Button
             android:id= "@+id/btnDivide"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="0"
             android:layout_column="4"
             android:layout_columnWeight="1"
@@ -64,7 +64,7 @@
         <Button
             android:id= "@+id/btn7"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="1"
             android:layout_column="0"
             android:layout_columnWeight="1"
@@ -78,7 +78,7 @@
         <Button
             android:id="@+id/btn8"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
@@ -92,7 +92,7 @@
         <Button
             android:id= "@+id/btn9"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="1"
             android:layout_column="3"
             android:layout_columnWeight="1"
@@ -106,7 +106,7 @@
         <Button
             android:id= "@+id/btnMulti"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="1"
             android:layout_columnWeight="1"
             android:layout_column="4"
@@ -118,7 +118,7 @@
         <Button
             android:id= "@+id/btn4"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="2"
             android:layout_column="0"
             android:layout_columnWeight="1"
@@ -132,7 +132,7 @@
         <Button
             android:id= "@+id/btn5"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="2"
             android:layout_column="1"
             android:layout_columnWeight="1"
@@ -146,7 +146,7 @@
         <Button
             android:id= "@+id/btn6"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="2"
             android:layout_column="3"
             android:layout_columnWeight="1"
@@ -160,7 +160,7 @@
         <Button
             android:id= "@+id/btnMinus"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="2"
             android:layout_columnWeight="1"
             android:layout_column="4"
@@ -172,7 +172,7 @@
         <Button
             android:id= "@+id/btn1"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="3"
             android:layout_column="0"
             android:layout_columnWeight="1"
@@ -186,7 +186,7 @@
         <Button
             android:id= "@+id/btn2"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="3"
             android:layout_column="1"
             android:layout_columnWeight="1"
@@ -200,7 +200,7 @@
         <Button
             android:id= "@+id/btn3"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="3"
             android:layout_column="3"
             android:layout_columnWeight="1"
@@ -214,7 +214,7 @@
         <Button
             android:id= "@+id/btnPlus"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="3"
             android:layout_columnWeight="1"
             android:layout_column="4"
@@ -226,7 +226,7 @@
         <Button
             android:id= "@+id/btn0"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="4"
             android:layout_column="0"
             android:layout_columnWeight="1"
@@ -241,7 +241,7 @@
         <Button
             android:id= "@+id/btnDecimal"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="4"
             android:layout_column="3"
             android:layout_columnWeight="1"
@@ -254,7 +254,7 @@
         <Button
             android:id= "@+id/btnEquals"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="45dp"
             android:layout_row="4"
             android:layout_columnWeight="1"
             android:layout_column="4"
