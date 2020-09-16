@@ -15,15 +15,25 @@ import javax.script.ScriptEngine;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //access to the TextView
     TextView resultText;
+    
+    //booleans to check state of new operation, decimal places, 
+    // and if value is negative
     boolean newOperation = true;
     boolean decimal = false;
     boolean neg = false;
-    String number = "0";
-    int zeroCount = 0;
+    
+    //String of the expression 
+    String expression = "0";
+
+    //expression in double form for parsing issues
     Double val;
     double result;
+
+    //error message
     String error = "Error";
+
     @Override
     @RequiresApi(28)
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,76 +46,77 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onRestoreInstanceState(Bundle savedInstanceState){
         super.onRestoreInstanceState(savedInstanceState);
 
-        number = savedInstanceState.getString("number");
+        expression = savedInstanceState.getString("expression");
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState){
         super.onSaveInstanceState(outState);
 
-        outState.putString("number", number);
+        outState.putString("expression", expression);
     }
 
     //onClick function
     //parameters is the view
     //doesn't return anything
     //is called on all numerical buttons and operations (does not include equal sign)
-    //shows each of the numbers and operations that is clicked on the calculator screen as input or output
+    //shows each of the expressions and operations that is clicked on the calculator screen as input or output
     @Override
     public void onClick(View view) {
         //clears the initial 0 on the on start of the screen
         //checks for if the click is a new operation
         if(newOperation){
             resultText.setText("0");
-            zeroCount++;
         }
         else{
-            number = resultText.getText().toString();
+            expression = resultText.getText().toString();
         }
 
         newOperation = false;
 
+        //switch statement for each of the buttons being clicked
+        //gets each of the buttons values by id
         try {
             switch(view.getId()){
                 case R.id.btn0:
                     clearZero();
-                    number += "0";
+                    expression += "0";
                     break;
                 case R.id.btn1:
                     clearZero();
-                    number += "1";
+                    expression += "1";
                     break;
                 case R.id.btn2:
                     clearZero();
-                    number += "2";
+                    expression += "2";
                     break;
                 case R.id.btn3:
                     clearZero();
-                    number += "3";
+                    expression += "3";
                     break;
                 case R.id.btn4:
                     clearZero();
-                    number += "4";
+                    expression += "4";
                     break;
                 case R.id.btn5:
                     clearZero();
-                    number += "5";
+                    expression += "5";
                     break;
                 case R.id.btn6:
                     clearZero();
-                    number += "6";
+                    expression += "6";
                     break;
                 case R.id.btn7:
                     clearZero();
-                    number += "7";
+                    expression += "7";
                     break;
                 case R.id.btn8:
                     clearZero();
-                    number += "8";
+                    expression += "8";
                     break;
                 case R.id.btn9:
                     clearZero();
-                    number += "9";
+                    expression += "9";
                     break;
                 case R.id.btnNegative:
                     negate();
@@ -114,38 +125,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     setDecimal();
                     break;
                 case R.id.btnClear:
-                    number = "0";
+                    expression = "0";
                     newOperation = true;
                     neg = false;
-                    zeroCount = 0;
                     break;
                 case R.id.btnPlus:
-                    number += "+";
+                    expression += "+";
                     decimal = false;
                     break;
                 case R.id.btnMinus:
-                    number += "-";
+                    expression += "-";
                     decimal = false;
                     break;
                 case R.id.btnMulti:
-                    number += "*";
+                    expression += "*";
                     decimal = false;
                     break;
                 case R.id.btnDivide:
-                    number += "/";
+                    expression += "/";
                     decimal = false;
                     break;
                 case R.id.btnBack:
                     backSpace();
                     break;
             }
-            resultText.setText(number);
+
+            resultText.setText(expression);
+
         }catch (Exception e){
             resultText.setText(error);
             e.printStackTrace();
         }
-
     }
+
+    //is called when the user clicks on the equals sign
+    //takes in the view
+    //sets the final value of the expression to the String
+    //uses the ScriptEngineManager class so evaluate the expression
+    //that value is then passed into the trailingValues function to set the precision
+    //checks to make sure if value is negative and decimal points
+    //sets newOperation to true
     public void equalsClick(View view) {
         try {
             String newVal = resultText.getText().toString();
@@ -153,80 +172,105 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             ScriptEngine engine = manager.getEngineByName("js");
             result = (double) engine.eval(newVal);
 
-            number = trailingValues(Double.toString(result));
+            expression = trailingValues(Double.toString(result));
 
             //check for negative
             if(neg = false){
-                number = resultText.getText().toString();
+                expression = resultText.getText().toString();
             }
-            if(Double.parseDouble(number) < 0) neg = true;
+            if(Double.parseDouble(expression) < 0) neg = true;
 
-            if(number.contains(".")) decimal = true;
+            if(expression.contains(".")) decimal = true;
 
             newOperation = true;
         }catch (Exception e){
             resultText.setText(error);
             e.printStackTrace();
         }
-
     }
-    //backspace method
+
+    //backSpace is the method for deleting values in the expression
+    //if the expression is not null then it will make a
+    //substring with a length less than it is
+    //called when backSpace button is clicked
     public void backSpace(){
-        if(number.equals("")){
-            number = "";
+        if(expression.equals("")){
+            expression = "";
         }
         else{
-            if(number.charAt(number.length() -1) == '.'){
+            if(expression.charAt(expression.length() -1) == '.'){
                 decimal = false;
             }
-            number = (String) number.subSequence(0,number.length()-1);
+            expression = (String) expression.subSequence(0,expression.length()-1);
         }
     }
+
+    //setsDecimal places the decimal
+    //checks for null string
+    //sets decimal to true when the decimal place is added
     public void setDecimal(){
         if(!decimal){
-            if(number.equals("") || number.contains("00")){
-                number = "0.";
+            if(expression.equals("")){
+                expression = "0.";
             } else {
-                number += ".";
+                expression += ".";
             }
             decimal = true;
         }
     }
+
+    //negates the value of the value
+    //checks to see if value is already negative
     public void negate(){
+        //if it is not negative then it will add the negative sign
+        // and set negative to true
         if(!neg){
-            number = "-"+number;
-            val = Double.valueOf(number);
+            expression = "-"+expression;
+            val = Double.valueOf(expression);
             neg = true;
 
         }
+        //if it is negative then it passes the value
+        // through trailingValues to set precision
         else{
-            val = Double.valueOf(number);
-            number = String.valueOf(Math.abs(val));
-            number = trailingValues(number);
+            val = Double.valueOf(expression);
+            expression = String.valueOf(Math.abs(val));
+            expression = trailingValues(expression);
             neg = false;
         }
     }
+
+    //trailingValues passes in the String expression
+    //returns a String with the value of expression
+    //chops off extra zero's in the answer
+    //sets precision of the answer to 4
+    //called in different functions
     public String trailingValues(String value){
-        //trailing values
+        //use BigDecimal to round the value off to 4 precision
         BigDecimal bd = new BigDecimal(value);
         MathContext m = new MathContext(4);
         BigDecimal f = bd.round(m);
 
-
+        //checks to see if there are extra zero's in the expression
         if(value.contains(".0") && value.endsWith("0")){
             double finalResult = Double.parseDouble(value);
             int finalInt = (int) finalResult;
             resultText.setText(String.valueOf(finalInt));
             return String.valueOf(finalInt);
         }
+        //if there is no extra zero's then setText and return that value
         else {
             resultText.setText(String.valueOf(f));
             return f.toString();
         }
     }
+
+    //clearZero clears the zero when entering a new number after clearing
+    //changes values from "05" to "5"
+    //called when each number button is pressed
     public void clearZero(){
-        if(number.equals("0") || number.equals("-0")){
-            number = "";
+        if(expression.equals("0") || expression.equals("-0")){
+            expression = "";
         }
     }
 }
