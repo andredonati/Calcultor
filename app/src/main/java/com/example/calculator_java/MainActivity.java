@@ -128,22 +128,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     expression = "0";
                     newOperation = true;
                     neg = false;
+                    decimal  = false;
                     break;
                 case R.id.btnPlus:
                     expression += "+";
-                    decimal = false;
                     break;
                 case R.id.btnMinus:
                     expression += "-";
-                    decimal = false;
                     break;
                 case R.id.btnMulti:
                     expression += "*";
-                    decimal = false;
                     break;
                 case R.id.btnDivide:
                     expression += "/";
-                    decimal = false;
                     break;
                 case R.id.btnBack:
                     backSpace();
@@ -180,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             if(Double.parseDouble(expression) < 0) neg = true;
 
-            if(expression.contains(".")) decimal = true;
+           if(expression.contains(".")) decimal = true;
 
             newOperation = true;
         }catch (Exception e){
@@ -216,6 +213,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 expression += ".";
             }
             decimal = true;
+        }
+        else{
+            if(expression.contains("+") || expression.contains("/") || expression.contains("*") || expression.contains("-")){
+                expression += ".";
+            }
         }
     }
 
